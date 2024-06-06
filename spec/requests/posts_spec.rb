@@ -63,12 +63,12 @@ RSpec.describe "Posts", type: :request do
                     user_id: user.id
                 }
             }
-            #POST HTTP
-            post "/posts", params: req_payload
-            paylaod = JSON.parse(response.body)
-            expect(payload).to_not be_empty
-            expect(payload["error"]).to_not be_nil
-            expect(response).to have_http_status(:unprocessable_entity)
+                # POST HTTP
+                post "/posts", params: req_payload
+                payload = JSON.parse(response.body)
+                expect(payload).to_not be_empty
+                expect(payload["error"]).to_not be_empty
+                expect(response).to have_http_status(:unprocessable_entity)
         end
     end
 
@@ -83,11 +83,11 @@ RSpec.describe "Posts", type: :request do
                     published: false
                 }
             }
-            #PUT HTTP
+            # PUT HTTP
             put "/posts/#{article.id}", params: req_payload
-            paylaod = JSON.parse(response.body)
-            expect(payload).to_not 
-            expect(payload["id"]).to_not eq(article.id)
+            payload = JSON.parse(response.body)
+            expect(payload).to_not be_empty
+            expect(payload["id"]).to eq(article.id)
             expect(response).to have_http_status(:ok)
         end
 
@@ -99,11 +99,11 @@ RSpec.describe "Posts", type: :request do
                     published: false,
                 }
             }
-            #PUT HTTP
+            # PUT HTTP
             put "/posts/#{article.id}", params: req_payload
-            paylaod = JSON.parse(response.body)
+            payload = JSON.parse(response.body)
             expect(payload).to_not be_empty
-            expect(payload["error"]).to_not eq(article.id)
+            expect(payload["error"]).to_not be_empty
             expect(response).to have_http_status(:unprocessable_entity)
         end
     end
