@@ -54,3 +54,5 @@ group :test do
   gem 'faker', '~> 3.3.1'
   gem 'database_cleaner', '~> 2.0.2'
 end
+
+ gem 'active_model_serializers', '~> 0.10.8'
