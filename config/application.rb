@@ -1,6 +1,14 @@
-require_relative "boot"
+require_relative 'boot'
 
 require "rails"
+# requires ...
+module Blogapi
+  class Application < Rails::Application
+    # otras cosas ...
+      config.eager_load_paths << Rails.root.join('app/lib')
+    # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  end
+end
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"

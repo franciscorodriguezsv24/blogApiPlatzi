@@ -48,6 +48,7 @@ end
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'letter_opener'
 end
 
 group :test do
@@ -57,4 +58,5 @@ group :test do
   gem 'database_cleaner', '~> 2.0.2'
 end
 
- gem 'active_model_serializers', '~> 0.10.8'
+  gem 'active_model_serializers', '~> 0.10.8'
+  gem 'jwt', '~> 2.1.0'

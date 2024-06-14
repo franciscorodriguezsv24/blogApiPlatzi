@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   get '/health', to: 'health#health'
 
+  get '/login', to: 'auth#login'
+
   resources :posts, only: [:index, :show, :create, :update]
 end

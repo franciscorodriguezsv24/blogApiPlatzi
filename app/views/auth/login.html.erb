@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Platzi Blog - APItitle</title>
+</head>
+<body>
+
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+    <script>
+        // Cuando la ventana cargue ejecuta la función
+        window.addEventListener('load', function() {
+    
+            // Inicializar integración con Auth0
+            var webAuth = new auth0.WebAuth({
+                // Apunta a tu dominio de Auth0
+                domain: 'dev-o3mq2z2t82foqsae.us.auth0.com',
+                // Usa el client ID que encuentras en la configuración de tu aplicación en Auth0
+                clientID: '9VrDVwHMJtg6LZPBD2Ibmr45ImlOKEbY',
+                // Con esto especificamos la clase de token que queremos
+                // token para recibir un JWT y id_token para que se incluya información del usuario
+                responseType: 'token id_token',
+                // Con esto especificamos la información que deseamos incluir en el token. Para nuestro caso
+                // email y profile para poder obtener el nombre
+                scope: 'openid profile email',
+                // Esta es la URL a la que Auth0 va a redirigir después de hacer login. Normalmente esto
+                // sería una URL al single page application de nuestra aplicación. En nuestro caso vamos
+                // a usar jwt.io para ver el token y así poder copiar y pegarlo en Postman para poder
+                // probar el API.
+                redirectUri: 'https://jwt.io'
+            });
+
+            // Con esto se redirige a la página de autenticación de Auth0.
+            // En este caso estamos redirigiendo inmediatamente. Normalmente, esto se ejecutaría después
+            // de que el usuario haga click en un botón de login.
+            webAuth.authorize();
+        });
+    </script>
+</body>
+</html>
