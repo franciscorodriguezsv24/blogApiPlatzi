@@ -17,11 +17,11 @@ require 'uri'
             # El objetivo es permitirle a otras partes verificar firmas generadas por tu aplicacion.
             algorithm: 'RS256',
             # Quien emite este token. Usa tu dominio de Auth0
-            iss: "https://dev-o3mq2z2t82foqsae.us.auth0.com/",
+            iss: "https://#{Rails.application.credentials.auth0[:domain]}/",,
             # Verificar que el token fue emitido por lo que pusimos en "iss"
             verify_iss: true,
             # Para quien fue emitido este token. Aqui debes colocar tu Client ID de Auth0
-            aud: "9VrDVwHMJtg6LZPBD2Ibmr45ImlOKEbY",
+            aud:  Rails.application.credentials.auth0[:client_id],
             # Verificar que el token fue emitido para lo que pusimos en "aud"
             verify_aud: true) do |header|
             # Dentro de este bloque se especifica como obtener la llave publica para verificar la firma
@@ -32,7 +32,7 @@ require 'uri'
 
     def self.jwks_hash
         # Obtenemos la llave publica del dominio de Auth0
-        jwks_raw = Net::HTTP.get URI("https://dev-o3mq2z2t82foqsae.us.auth0.com/.well-known/jwks.json")
+        jwks_raw = Net::HTTP.get URI("https://#{Rails.application.credentials.auth0[:domain]}/.well-known/jwks.json")
         # Decodificamos la llave publica y la retornamos
         jwks_keys = Array(JSON.parse(jwks_raw)['keys'])
         Hash[

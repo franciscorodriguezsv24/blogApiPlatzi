@@ -12,9 +12,9 @@
             // Inicializar integración con Auth0
             var webAuth = new auth0.WebAuth({
                 // Apunta a tu dominio de Auth0
-                domain: 'dev-o3mq2z2t82foqsae.us.auth0.com',
+                domain: '<%= Rails.application.credentials.auth0[:domain] %>',
                 // Usa el client ID que encuentras en la configuración de tu aplicación en Auth0
-                clientID: '9VrDVwHMJtg6LZPBD2Ibmr45ImlOKEbY',
+                clientID: '<%= Rails.application.credentials.auth0[:client_id] %>',
                 // Con esto especificamos la clase de token que queremos
                 // token para recibir un JWT y id_token para que se incluya información del usuario
                 responseType: 'token id_token',
